@@ -8,6 +8,8 @@ const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
 
+const port = process.env.PORT || 3000;
+
 const db = knex({
   client: "pg",
   connection: {
@@ -38,4 +40,4 @@ app.put("/image", (req, res) => image.incrementEntries(req, res, db));
 
 app.post("/detectFace", (req, res) => image.callClarifaiApi(req, res));
 
-app.listen(3000, console.log("App is running on port 3000"));
+app.listen(port, console.log("App is running on port ", port));
