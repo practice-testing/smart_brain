@@ -8,7 +8,10 @@ const callClarifaiApi = (req, res) => {
   app.models
     .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
     .then((response) => res.json(response))
-    .catch((err) => res.json("error indentifying face"));
+    .catch((err) => {
+      console.log(err);
+      res.json("error indentifying face");
+    });
 };
 
 const incrementEntries = (req, res, db) => {
@@ -20,7 +23,10 @@ const incrementEntries = (req, res, db) => {
     .then((entries) => {
       res.json(entries);
     })
-    .catch((err) => res.status(400).json(err));
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 };
 
-module.exports = { incrementEntries,callClarifaiApi };
+module.exports = { incrementEntries, callClarifaiApi };
