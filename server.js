@@ -13,12 +13,8 @@ const port = process.env.PORT || 3000;
 const db = knex({
   client: "pg",
   connection: {
-    host:`ec2-34-197-212-240.compute-1.amazonaws.com`,
-    user:`ukwazrpgjwvfwz`,
-    password:`374c343e2be3beb4de442c1452feb35d0eb8385e0b83ce840d6ffcde1c89edbb`,
-    database:`ddni6317ipblh8`,
-    ssl: true,
-    port:`5432`
+    connectString: process.env.DATABASE_URL,
+    ssl: false,
   },
 });
 
